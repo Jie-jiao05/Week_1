@@ -66,6 +66,7 @@ aggregate(physically_active_7d ~ grade + gender,data = yrbss,FUN = mean,na.rm = 
     color = "Gender"
   )
 
+
 # Create a plot that shows the relationship betwen physical activity and bmi
 # among female students in grade 12 
 # Ensure that the figure is clearly labeled and includes an appropriate legend
