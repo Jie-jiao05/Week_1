@@ -65,13 +65,30 @@ aggregate(xxx) |>
 # Push your completed code to your GitHub repository
 
 
-#
 #set name 
 install.packages("usethis")
 library(usethis) 
 
-usethis::use_git_config(user.name = "Jie", user.email = "jiejiao404@gmail.com")
+usethis::use_git_config(user.name = "Jie-jiao05", user.email = "jiejiao404@gmail.com")
 
 # to confirm, generate a git situation-report, your user name and email 
 # should appear under Git config (global)
 usethis::git_sitrep()
+
+
+
+#python & r environment
+.venv
+_pycache_/
+.Rproj.user/
+.RHISTORY
+
+#DATA FILE
+*.CSV
+*.xlsx
+*.parquet
+data/
+  
+
+
+
