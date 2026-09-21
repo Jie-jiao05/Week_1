@@ -29,14 +29,18 @@ library(tidyverse)
 install.packages("flextable")
 library(flextable)
 
-yrbss$Grade <- yrbss$grade
-yrbss$Gender <- yrbss$gender
+#yrbss$Grade <- yrbss$grade
+#yrbss$Gender <- yrbss$gender
+
+yrbss$Grade <- factor(yrbss$grade,levels = sort(unique(yrbss$grade)))
+yrbss$Gender <- tools::toTitleCase(yrbss$gender)
 
 z <- summarizor(
   yrbss[c("Grade", "Gender")],
   overall_label = NULL
 )
-ft_1 <- as_flextable(z) 
+
+ft_1 <- as_flextable(z)
 ft_1
 
 
@@ -50,17 +54,33 @@ ft_1
 # no one correct way to do this
 # Ensure that the figure is clearly labeled and includes an appropriate legend
 
-aggregate(xxx) |>
-  ggplot(aes(xxx)) + 
-  geom_line()
-...
-
+#aggregate(xxx) |>
+#  ggplot(aes(xxx)) + 
+#  geom_line()
+#...
+aggregate(physically_active_7d ~ grade + gender,data = yrbss,FUN = mean,na.rm = TRUE) |>
+  ggplot(aes(x = grade,y = physically_active_7d,color = gender,group = gender)) +
+  geom_line() +labs(
+    x = "Grade",
+    y = "Mean of Physcially Active in 7 Day",
+    color = "Gender"
+  )
 
 # Create a plot that shows the relationship betwen physical activity and bmi
 # among female students in grade 12 
 # Ensure that the figure is clearly labeled and includes an appropriate legend
 
-
+yrbss |>
+  filter(gender == "female", grade == "12") |>
+  mutate(bmi = weight / (height)^2) |>
+  ggplot(aes(x = physically_active_7d, y = bmi)) +
+  geom_point(aes(color = gender)) +
+  labs(
+    x = "Physically Active Days",
+    y = "BMI",
+    color = "Gender",
+    title = "Physical Activity and BMI Among Grade 12 Female Students"
+  )
 
 # Push your completed code to your GitHub repository
 
