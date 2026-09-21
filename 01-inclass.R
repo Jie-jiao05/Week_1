@@ -77,18 +77,6 @@ usethis::git_sitrep()
 
 
 
-#python & r environment
-.venv
-_pycache_/
-.Rproj.user/
-.RHISTORY
-
-#DATA FILE
-*.CSV
-*.xlsx
-*.parquet
-data/
-  
 
 
 
